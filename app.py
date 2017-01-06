@@ -19,49 +19,6 @@ def process_image(img):
   img.paste(mask, (0,0), mask)
   newdata = img.getdata()
 
-  '''
-
-  #make sure it matches the size of the image
-  mask = mask.resize(img.size)
-  #enhance it by raising its saturation
-  #converter = ImageEnhance.Color(mask)
-  #mask = converter.enhance(2.0)
-  #get mutable data
-  mdata = mask.getdata()
-  #make sure our image has alpha channel
-  img = img.convert('RGBA')
-  #dummy convert does nothing but available for saturation tweaking
-  converter = ImageEnhance.Color(img)
-  img = converter.enhance(1.0)
-  #get mutable data
-  idata = img.getdata()
-
-  #create output data
-  newdata = []
-  #loop through our mask and image pixels
-  for iitem, mitem in zip(idata, mdata):
-    #ratio of each pixel is 1:2 (image:mask)
-    #tweak this for different colorings
-    r1 = iitem[0]
-    r2 = mitem[0]
-    g1 = iitem[1]
-    g2 = mitem[1]
-    b1 = iitem[2]
-    b2 = mitem[2]
-
-    #mm = 2.0
-    #the higher b, the higher the brightness
-    #b = .3
-    #create RGBs
-    r = r1
-    g =
-    b =
-    a = 255
-    #add it to our output
-    newdata.append((r, g, b, a))
-
-  '''
-
   #create an image from our new combined data
   img.putdata(newdata)
   #unique name
