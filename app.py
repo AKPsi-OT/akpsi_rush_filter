@@ -41,10 +41,12 @@ def classify_upload():
             werkzeug.secure_filename(imagefile.filename)
     filename = os.path.join('/tmp', filename_)
 
+    fname = str(filename).lower()
+
     #make sure it has the correct file type
     b = False
     for ext in ALLOWED_IMAGE_EXTENSIONS:
-      if ext in filename:
+      if ext in fname:
         b = True
     if not b:
       return 'Invalid filetype.'
